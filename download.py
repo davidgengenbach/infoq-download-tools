@@ -11,8 +11,8 @@ OUT_TIMES = 'data/times.txt'
 OUT_SLIDES = 'data/slides.txt'
 
 def main():
-    if os.path.exists(OUT_TIMES) and os.path.exists(OUT_SLIDES):
-        return
+    #if os.path.exists(OUT_TIMES) and os.path.exists(OUT_SLIDES):
+    #    return
 
     parser = argparse.ArgumentParser(description="Download infoq slides/times for a video")
     parser.add_argument('url', default=URL)
@@ -24,7 +24,7 @@ def main():
 
 
 def get_slides_and_times_from_infoq(url):
-    html = helper.get_url(URL).text
+    html = helper.get_url(url).text
     matches = re.findall(r'var slides = new Array\((.*?)\),(?:.*?)TIMES = new Array\((.*?)\)', html, flags=re.S)
     assert(len(matches) == 1)
     assert(len(matches[0]) == 2)

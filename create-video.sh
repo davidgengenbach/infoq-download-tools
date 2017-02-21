@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#set -x
+set -x
 
 VIDEO_URL_IN="$1"
 AUDIO_IN="$2"
@@ -33,7 +33,6 @@ fi
 
 # Processing
 mkdir -p data/slides
-
 ./download.py "$VIDEO_URL_IN" || exit 1
 ./process.py || exit 1
 cd data
