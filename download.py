@@ -7,8 +7,8 @@ import argparse
 
 URL = 'https://www.infoq.com/presentations/Simple-Made-Easy'
 
-OUT_TIMES = 'times.txt'
-OUT_SLIDES = 'slides.txt'
+OUT_TIMES = 'data/times.txt'
+OUT_SLIDES = 'data/slides.txt'
 
 def main():
     if os.path.exists(OUT_TIMES) and os.path.exists(OUT_SLIDES):

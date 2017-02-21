@@ -2,9 +2,9 @@
 
 import helper
 
-OUT = 'ffconcat.txt'
-IN_TIMES = 'times.txt'
-IN_SLIDES = 'slides.txt'
+OUT = 'data/ffconcat.txt'
+IN_TIMES = 'data/times.txt'
+IN_SLIDES = 'data/slides.txt'
 
 
 def main():
@@ -24,11 +24,11 @@ def main():
         f.write('\n'.join(out))
 
 
-def download_slides(slides_remote):
+def download_slides(slides_remote, prefix = 'data'):
     slides = []
     for slide in slides_remote:
         filename = "slides/{}".format(slide.split('/')[-1])
-        helper.download_file(slide, filename)
+        helper.download_file(slide, prefix + '/' + filename)
         slides.append(filename)
     return slides
 

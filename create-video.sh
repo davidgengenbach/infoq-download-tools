@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#set -x
+
 VIDEO_URL_IN="$1"
 AUDIO_IN="$2"
 VIDEO_OUT="$3"
@@ -26,13 +28,13 @@ if [ "$AUDIO_IN" == "" ]; then
 fi
 
 if [ "$VIDEO_OUT" == "" ]; then
-    AUDIO_IN='infoq-11-sep-simplemadeeasy.mp4'
+    VIDEO_OUT='infoq-11-sep-simplemadeeasy.mp4'
 fi
 
 # Processing
 mkdir -p data/slides
 
+./download.py "$VIDEO_URL_IN" || exit 1
+./process.py || exit 1
 cd data
-../download.py "$VIDEO_URL_IN" || exit 1
-../process.py || exit 1
 ffmpeg -i $FFCONCAT_FILE_IN -i $AUDIO_IN -c:a copy -vf fps=$FPS $VIDEO_OUT
